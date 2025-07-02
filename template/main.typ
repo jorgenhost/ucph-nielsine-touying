@@ -1,6 +1,5 @@
-// #import "@preview/ucph-nielsine-slides:0.1.0" as uc
+#import "@preview/ucph-nielsine-slides:0.1.0" as uc
 #import "@preview/touying:0.6.1" as ty
-#import "../src/lib.typ" as uc
 
 #show: uc.ucph-metropolis-theme.with(ty.config-info(
   title: [Title],

@@ -117,9 +117,20 @@ The music experience has been #pi.pin(1)cancelled#pi.pin(2).
 ]
 
 
-== Fourth slide
+= The OLS estimator
+== Derivation of the OLS estimator
+#uc.slide(align: left)[
+  #align(center + top)[
+    #uc.framed(title: "The OLS estimator", block-width: 60%)[
+      $
+        hat(bold(beta)) = (bold(X)^T bold(X))^(-1) bold(X)^T bold(y)
+      $
+    ]]
 
-#uc.framed([123], title: "123")
+  - This is very important.
+  - Remember this.
+]
+
 
 #uc.focus-slide()[
   Wake up!
@@ -141,7 +152,7 @@ The music experience has been #pi.pin(1)cancelled#pi.pin(2).
 <kbd><img src="assets/slide7.png" width="300"></kbd><kbd><img src="assets/slide8.png" width="300"></kbd>
 
 ## Working locally
-Follow the initial steps from the official [repo](https://github.com/typst/typst) to install Typst on your machine. Open your terminl and type:
+Follow the initial steps from the official [repo](https://github.com/typst/typst) to install Typst on your machine. Open your terminal and type:
 
 ```
 typst init @preview/ucph-nielsine-touying
