@@ -271,7 +271,7 @@
       slide-fn: slide,
       new-section-slide-fn: new-section-slide,
     ),
-    ty.config-methods(alert: (self: none, it) => text(fill: self.colors.primary)),
+    ty.config-methods(alert: (self: none, it) => text(fill: self.colors.primary, body)),
     ty.config-colors(
       primary: colors.ucph_dark.red,
       primary-light: rgb("#d6c6b7"),
@@ -294,22 +294,6 @@
   )
 
   body
-}
-
-#let cols(columns: none, gutter: 1em, ..bodies) = {
-  let bodies = bodies.pos()
-
-  let columns = if columns == none {
-    (1fr,) * bodies.len()
-  } else {
-    columns
-  }
-
-  if columns.len() != bodies.len() {
-    panic("Number of columns must match number of content arguments")
-  }
-
-  grid(columns: columns, gutter: gutter, ..bodies)
 }
 
 #let framed(
