@@ -13,8 +13,6 @@
 
 #uc.title-slide()
 
-/// #show math.equation: set text(font: "Fira Math")
-
 // If you want a table of contents
 // #uc.components.adaptive-columns(outline(indent: 1em))
 
@@ -28,16 +26,10 @@ Wow, this is a slide.
 wqewqe
 
 == Third slide
-#uc.cols(columns: (1fr, 1fr))[
-  #set align(center)
-  #uc.framed(title: "Wow")[
-    $
-      y_(i t) = c_i + bold(x_(i t) beta_(i t))+epsilon_(i t )
-    $
-  ]
+#uc.slide(align: center + horizon, composer: (1fr, 1fr))[
+  First column.
 ][
-  #set align(center)
-  _write something over here_ #cite(<schelling1971dynamic>, form: "prose") #footnote("a footnote")
+  Second column. #cite(<schelling1971dynamic>, form: "prose")#footnote("a footnote")
 ]
 
 

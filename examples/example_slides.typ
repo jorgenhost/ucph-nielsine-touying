@@ -15,6 +15,7 @@
     institution: [University of Copenhagen],
     logo: image("../assets/ucph_1_seal.svg"),
   ),
+  /// Uncomment this if you have animations in your slides and only want to keep the last subslide
   // ty.config-common(
   //   handout: true
   // )
@@ -42,8 +43,7 @@ The music experience has been #pi.pin(1)cancelled#pi.pin(2).
   Touying equation with pause:
 
   $
-    f(x) & = #ty.pause x^2 + 2x + 1 \
-         & = #ty.pause (x + 1)^2    \
+    f(x) & = #ty.pause x^2 + 2x + 1 & = #ty.pause (x + 1)^2
   $
 
   #ty.meanwhile
@@ -79,17 +79,76 @@ ty.config-common(handout: true)
 )
 ```
 
-== Third slide
+== Slide with columns
 #uc.slide(align: center + horizon, composer: (1fr, 1fr))[
   First column.
 ][
   Second column. #cite(<schelling1971dynamic>, form: "prose")#footnote("a footnote")
 ]
 
+= The OLS estimator
+== Derivation of the OLS estimator
+For a multiple linear regression model, the equation can be written in matrix form as:
 
-== Fourth slide
+$
+  bold(y)=bold(X) bold(beta) + bold(epsilon)
+$
 
-#uc.framed([123], title: "123")
+where:
+- $bold(y)$ is an $n times 1$ vector of observed dependent variables.
+- $bold(X)$ is an $k times (k+ 1)$ matrix of independent variables (including a column of ones for the intercept).
+- $bold(beta)$ is a vector of unknown coefficients.
+- $bold(epsilon)$ is an $n times 1$ vector of error terms.
+
+#pagebreak()
+
+
+Implying we have a vector of residuals given by:
+
+$
+  bold(epsilon) = bold(y)-bold(X) bold(beta)
+$
+
+Our objective is to minimize the sum of squared residuals:
+
+$
+  min_(beta) bold(epsilon)^T bold(epsilon)&=(bold(y)-bold(X) bold(beta))^T (bold(y)-bold(X) bold(beta)) #sym.arrow.l.r
+  \
+  &= underbrace(bold(y)^T bold(y), perp bold(beta)) - bold(y)^T bold(X) bold(beta)-bold(beta)^T bold(X)^T bold(y)+ bold(beta)^T bold(X)^T bold(X) bold(beta) arrow.l.r
+  \
+  &= -2bold(beta)^T
+  bold(X)^T bold(y) + bold(beta)^T bold(X)^T bold(X) bold(beta)
+$
+
+_Note_: By multiple a vector with itself transposed with just a scalar, or in this case $bold(epsilon)^T bold(epsilon)$ which is the sum of squared error terms.
+
+#pagebreak()
+
+$
+  diff/(diff bold(beta))(-2bold(beta)^T
+    bold(X)^T bold(y) + bold(beta)^T bold(X)^T bold(X) bold(beta)) & = 0 arrow.l.r                  \
+                                    2 bold(X)^T bold(X) bold(beta) & = 2bold(X)^T bold(y) arrow.l.r \
+                                       bold(X)^T bold(X)bold(beta) & = bold(X)^T bold(y) arrow.l.r
+$
+Multiply both sides with $(bold(X)^T bold(X))^(-1)$:
+
+$
+  underbrace((bold(X)^T bold(X))^(-1) bold(X)^T bold(X), = bold(I))) bold(beta) &= (bold(X)^T bold(X))^(-1) bold(X)^T bold(y) arrow.l.r
+  \
+  hat(bold(beta)) &= (bold(X)^T bold(X))^(-1) bold(X)^T bold(y)
+$
+
+#uc.slide(align: left)[
+  #align(center + top)[
+    #uc.framed(title: "The OLS estimator", block-width: 60%)[
+      $
+        hat(bold(beta)) = (bold(X)^T bold(X))^(-1) bold(X)^T bold(y)
+      $
+    ]]
+
+  - This is very important.
+  - Remember this.
+]
 
 = Colors
 
@@ -97,17 +156,17 @@ ty.config-common(handout: true)
 
 #uc.show_color_pallette()
 
-== 123
-
 #uc.focus-slide()[
   Wake up!
 ]
 
 
 #let my_gradient = gradient.linear(uc.colors.ucph_dark.red, uc.colors.ucph_dark.blue, angle: 45deg)
+
 #uc.focus-slide(fill: my_gradient)[
   Wake up with a gradient!
 ]
+
 
 == References
 #set text(size: 14pt)

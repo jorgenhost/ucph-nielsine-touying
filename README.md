@@ -37,52 +37,123 @@ Wow, this is a slide.
 
 <kbd><img src="assets/thumbnail.png" width="300"></kbd><kbd><img src="assets/slide1.png" width="300"></kbd><kbd><img src="assets/slide2.png" width="300"></kbd>
 
-### Installation
-
-A step by step guide that will tell you how to get the development environment up and running. This should explain how to clone the repo and where to (maybe a link to the typst documentation on it), along with any pre-requisite software and installation steps.
-
-```
-$ First step
-$ Another step
-$ Final step
-```
 
 ## Usage
 
-A more in-depth description of usage. Any template arguments? A complicated example that showcases most if not all of the functions the package provides? This is also an excellent place to signpost the manual.
+It is strongly recommended to explore the [documentation](https://touying-typ.github.io/) of the `touying` package to learn more about the functionality. This includes, but is not limited to, animations and compatibility with other Typst packages like [`pinit`](https://typst.app/universe/package/pinit/). A more extensive example of the slide template is available [here](https://github.com/jorgenhost/ucph-nielsine-touying/tree/main/examples).
 
 ```typ
-#import "@preview/my-package:0.1.0": *
+#import "@preview/ucph-nielsine-touying:0.1.0" as uc
+#import "@preview/touying:0.6.1" as ty
+#import "@preview/pinit:0.2.2" as pi
 
-#let my-complicated-example = ...
+#show: uc.ucph-metropolis-theme.with(
+  header-right: align(right, image("../assets/ucph_1_seal.svg", height: 1.1cm)),
+  ty.config-info(
+    title: [Title],
+    subtitle: [Subtitle],
+    author: [Authors],
+    date: datetime.today(),
+    institution: [University of Copenhagen],
+    logo: image("../assets/ucph_1_seal.svg"),
+  ),
+  // ty.config-common(
+  //   handout: true
+  // )
+)
+
+#uc.title-slide()
+
+// If you want a table of contents
+// #uc.components.adaptive-columns(outline(indent: 1em))
+
+= First section
+
+== First slide
+Wow, this is a slide.
+
+== Second slide
+The music experience has been #pi.pin(1)cancelled#pi.pin(2).
+
+#pi.pinit-highlight(1, 2)
+
+#pi.pinit-point-from(2)[This quote is from the Severance TV-show]
+
+== Animations
+#uc.slide[
+  Touying equation with pause:
+
+  $
+    f(x) & = #ty.pause x^2 + 2x + 1 \
+         & = #ty.pause (x + 1)^2    \
+  $
+
+  #ty.meanwhile
+
+  Touying equation is very simple.
+]
+
+== Complex Animations
+#uc.slide(
+  repeat: 3,
+  self => [
+    #let (uncover, only, alternatives) = ty.utils.methods(self)
+
+    At subslide #self.subslide, we can
+
+    use #uncover("2-")[`#uncover` function] for reserving space,
+
+    use #only("2-")[`#only` function] for not reserving space,
+
+    #alternatives[call `#only` multiple times \u{717}][use `#alternatives` function #sym.checkmark] for choosing one of the alternatives.
+  ],
+)
+
+== Third slide
+#uc.slide(align: center + horizon, composer: (1fr, 1fr))[
+  First column.
+][
+  Second column. #cite(<schelling1971dynamic>, form: "prose")#footnote("a footnote")
+]
+
+
+== Fourth slide
+
+#uc.framed([123], title: "123")
+
+#uc.focus-slide()[
+  Wake up!
+]
+
+#let my_gradient = gradient.linear(uc.colors.ucph_dark.red, uc.colors.ucph_dark.blue, angle: 45deg)
+
+#uc.focus-slide(fill: my_gradient)[
+  Wake up with a gradient!
+]
+
+== References
+#set text(size: 14pt)
+#bibliography("bibliography.bib", style: "harvard-cite-them-right", title: none)
 ```
 
-## Additional Documentation and Acknowledgments
+<kbd><img src="assets/slide4.png" width="300"></kbd><kbd><img src="assets/slide5.png" width="300"></kbd><kbd><img src="assets/slide6.png" width="300"></kbd>
 
-* Project folder on server:
-* Confluence link:
-* Asana board:
-* etc...
+<kbd><img src="assets/slide7.png" width="300"></kbd><kbd><img src="assets/slide8.png" width="300"></kbd>
 
+## Working locally
+Follow the initial steps from the official [repo](https://github.com/typst/typst) to install Typst on your machine. Open your terminl and type:
 
-## Template adaptation checklist
+```
+typst init @preview/ucph-nielsine-touying
+```
+This will create a directory with the template name on your current path.
 
-- [ ] Fill out `README.md`
-  - Change the `my-package` package name, including code snippets
-  - Check section contents and/or delete sections that don't apply
-- [ ] Check and/or replace `LICENSE` by something that suits your needs
-- [ ] Fill out `typst.toml`
-  - See also the [typst/packages README](https://github.com/typst/packages/?tab=readme-ov-file#package-format)
-- [ ] Adapt Repository URLs in `CHANGELOG.md`
-  - Consider only committing that file with your first release, or removing the "Initial Release" part in the beginning
-- [ ] Adapt or deactivate the release workflow in `.github/workflows/release.yml`
-  - to deactivate it, delete that file or remove/comment out lines 2-4 (`on:` and following)
-  - to use the workflow
-    - [ ] check the values under `env:`, particularly `REGISTRY_REPO`
-    - [ ] if you don't have one, [create a fine-grained personal access token](https://github.com/settings/tokens?type=beta) with [only Contents permission](https://stackoverflow.com/a/75116350/371191) for the `REGISTRY_REPO`
-    - [ ] on this repo, create a secret `REGISTRY_TOKEN` (at `https://github.com/[user]/[repo]/settings/secrets/actions`) that contains the so created token
+## Development
 
-    if configured correctly, whenever you create a tag `v...`, your package will be pushed onto a branch on the `REGISTRY_REPO`, from which you can then create a pull request against [typst/packages](https://github.com/typst/packages/)
-- [ ] remove/replace the example test case
-- [ ] (add your actual code, docs and tests)
-- [ ] remove this section from the README
+```
+$ git clone https://github.com/jorgenhost/ucph-nielsine-touying
+$ cd ucph-nielsine-touying
+```
+
+## Why "nielsine"?
+Nielsine Nielsen was the first female to get a degree in medicine in Denmark on Friday 23rd January 1885, paving the way for other females to follow in her footsteps. The reply (by royal decree) to her application read: _"Women are hereby allowed to obtain an academic degree at the University of Copenhagen."_ That is pretty cool. Read more [here](https://news.ku.dk/nielsine-nielsen/).
