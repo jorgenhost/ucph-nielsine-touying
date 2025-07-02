@@ -15,7 +15,9 @@ exclude = [
   ".typstignore",
   "Justfile",
   "examples",
-  "assets/*.png"
+  "assets/*.png",
+  "examples/*.pdf",
+  "template/*.pdf"
 ]
 
 [template]
