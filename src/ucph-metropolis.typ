@@ -3,7 +3,7 @@
 
 #import "@preview/touying:0.6.1" as ty
 #import "colors.typ" as colors
-#import "utils.typ" as ucph_utils
+#import "utils.typ" as ucph-utils
 
 /// Default slide function for the presentation.
 ///
@@ -93,7 +93,7 @@
 /// #show: ucph-metropolis-theme.with(
 ///   config-info(
 ///     title: [Title],
-///     logo: image("assets/ucph_1_seal.svg"),
+///     logo: image("assets/ucph-1-seal.svg"),
 ///   ),
 /// )
 ///
@@ -194,8 +194,8 @@
 #let focus-slide(
   config: (:),
   align: horizon + center,
-  logo: place(right, image("../assets/ucph_1_negative.svg", width: 15%), dx: -15pt, dy: -8pt),
-  fill: colors.ucph_dark.red,
+  logo: place(right, image("../assets/ucph-1-negative.svg", width: 15%), dx: -15pt, dy: -8pt),
+  fill: colors.ucph-dark.red,
   body,
 ) = ty.touying-slide-wrapper(self => {
   self = ty.utils.merge-dicts(self, ty.config-common(freeze-slide-counter: true), ty.config-page(
@@ -243,9 +243,9 @@
     setting: ty.utils.fit-to-width.with(grow: false, 100%),
     depth: self.slide-level,
   ),
-  header-right: align(right, image("../assets/ucph_1_seal.svg", height: 1.2cm)),
-  footer: self => ucph_utils.section-links(self),
-  footer-right: self => ucph_utils.slide-counter-label(self),
+  header-right: align(right, image("../assets/ucph-1-seal.svg", height: 1.2cm)),
+  footer: self => ucph-utils.section-links(self),
+  footer-right: self => ucph-utils.slide-counter-label(self),
   footer-progress: true,
   footer-appendix-label: "A-",
   ..args,
@@ -273,9 +273,9 @@
     ),
     ty.config-methods(alert: (self: none, it) => text(fill: self.colors.primary, body)),
     ty.config-colors(
-      primary: colors.ucph_dark.red,
+      primary: colors.ucph-dark.red,
       primary-light: rgb("#d6c6b7"),
-      secondary: colors.ucph_dark.petroleum,
+      secondary: colors.ucph-dark.petroleum,
       neutral-lightest: rgb("#fafafa"),
       neutral-dark: rgb("#23373b"),
       neutral-darkest: rgb("#23373b"),
