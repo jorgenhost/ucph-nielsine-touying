@@ -1,19 +1,17 @@
-#import "@preview/mitex:0.2.4": mitex
-#import "../src/lib.typ" as uc
-// #import "@preview/ucph-nielsine-touying" as uc
+#import "@preview/ucph-nielsine-touying" as uc
 #import "@preview/touying:0.6.1" as ty
 #import "@preview/numbly:0.1.0": numbly
 #import "@preview/pinit:0.2.2" as pi
 
 #show: uc.ucph-metropolis-theme.with(
-  header-right: align(right, image("../assets/ucph_1_seal.svg", height: 1.1cm)),
+  header-right: align(right, image("assets/ucph-1-seal.svg", height: 1.1cm)),
   ty.config-info(
     title: [Title],
     subtitle: [Subtitle],
     author: [Authors],
     date: datetime.today(),
     institution: [University of Copenhagen],
-    logo: image("../assets/ucph_1_seal.svg"),
+    logo: image("assets/ucph-1-seal.svg"),
   ),
   /// Uncomment this if you have animations in your slides and only want to keep the last subslide
   // ty.config-common(
@@ -154,16 +152,16 @@ $
 
 == Let me show you the colors
 
-#uc.show_color_pallette()
+#uc.show-color-pallette()
 
 #uc.focus-slide()[
   Wake up!
 ]
 
 
-#let my_gradient = gradient.linear(uc.colors.ucph_dark.red, uc.colors.ucph_dark.blue, angle: 45deg)
+#let my-gradient = gradient.linear(uc.colors.ucph-dark.red, uc.colors.ucph-dark.blue, angle: 45deg)
 
-#uc.focus-slide(fill: my_gradient)[
+#uc.focus-slide(fill: my-gradient)[
   Wake up with a gradient!
 ]
 
