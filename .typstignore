@@ -11,5 +11,5 @@
 scripts
 tests
 Justfile
-example
+examples
 template/*.pdf
