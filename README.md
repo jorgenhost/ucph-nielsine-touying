@@ -32,6 +32,8 @@ These instructions will get you a copy of the project up and running on the typs
 
 == First slide
 Wow, this is a slide.
+
+#uc.focus-slide("Wake up!")
 ```
 
 <kbd><img src="assets/thumbnail.png" width="400"></kbd><kbd><img src="assets/slide1.png" width="400"></kbd>
