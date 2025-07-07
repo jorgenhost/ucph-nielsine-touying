@@ -13,7 +13,11 @@ env:
   PATH_PREFIX: packages/preview
 
 jobs:
+  call-docker-workflow:
+    uses: docker.yml
+
   release:
+    needs: call-docker-workflow
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
