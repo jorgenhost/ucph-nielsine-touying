@@ -34,7 +34,10 @@ These instructions will get you a copy of the project up and running on the typs
 Wow, this is a slide.
 ```
 
-<kbd><img src="assets/thumbnail.png" width="300"></kbd><kbd><img src="assets/slide1.png" width="300"></kbd><kbd><img src="assets/slide2.png" width="300"></kbd>
+<kbd><img src="assets/thumbnail.png" width="400"></kbd><kbd><img src="assets/slide1.png" width="400"></kbd>
+
+<kbd><img src="assets/slide2.png" width="400"></kbd>
+<kbd><img src="assets/slide3.png" width="400"></kbd>
 
 
 ## Usage
@@ -146,9 +149,9 @@ The music experience has been #pi.pin(1)cancelled#pi.pin(2).
 #bibliography("bibliography.bib", style: "harvard-cite-them-right", title: none)
 ```
 
-<kbd><img src="assets/slide3.png" width="300"></kbd><kbd><img src="assets/slide4.png" width="300"></kbd><kbd><img src="assets/slide5.png" width="300"></kbd>
+<kbd><img src="assets/slide4.png" width="400"></kbd><kbd><img src="assets/slide5.png" width="400"></kbd>
 
-<kbd><img src="assets/slide6.png" width="300"></kbd><kbd><img src="assets/slide7.png" width="300"></kbd>
+<kbd><img src="assets/slide6.png" width="400"></kbd><kbd><img src="assets/slide7.png" width="400"></kbd>
 
 ## Working locally
 Follow the initial steps from the official [repo](https://github.com/typst/typst) to install Typst on your machine. Open your terminal and type:
