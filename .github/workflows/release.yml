@@ -39,6 +39,8 @@ jobs:
             echo "package version ${VERSION} does not match release tag ${GITHUB_REF_NAME}" >&2
             exit 1
           fi
+          docker pull ghcr.io/typst/package-check:0.2.0
+          docker run -v .:/template ghcr.io/typst/package-check:0.2.0 check
 
       - name: Build package
         run: |
