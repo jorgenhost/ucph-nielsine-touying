@@ -16,7 +16,7 @@ jobs:
       packages: write
     steps:
       - uses: actions/checkout@v4
-      - uses: package-check/cachix/install-nix-action@v25
+      - uses: cachix/install-nix-action@v25
         with:
           github_access_token: ${{ secrets.GITHUB_TOKEN }}
       - name: Restore and cache Nix store
