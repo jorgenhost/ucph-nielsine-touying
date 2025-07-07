@@ -14,8 +14,7 @@ env:
 
 jobs:
   call-docker-workflow:
-    # uses: docker pull ghcr.io/typst/package-check:0.2.0
-    uses: docker run -v .:/template ghcr.io/typst/package-check:0.2.0 check
+    uses: docker.yml
 
   release:
     needs: call-docker-workflow
