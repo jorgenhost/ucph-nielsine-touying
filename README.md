@@ -59,6 +59,7 @@ It is strongly recommended to explore the [documentation](https://touying-typ.gi
     institution: [University of Copenhagen],
     logo: image("assets/ucph-1-seal.svg"),
   ),
+  // Uncomment this if you have animations in your slides and only want to keep the last subslide
   // ty.config-common(
   //   handout: true
   // )
