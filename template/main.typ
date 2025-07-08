@@ -1,5 +1,8 @@
-#import "@preview/ucph-nielsine-touying:0.1.1" as uc
+#import "@preview/ucph-nielsine-touying:0.1.0" as uc
 #import "@preview/touying:0.6.1" as ty
+#set text(font: "Fira Sans")
+// Consider Fira Math as math font?
+// #show math.equation: set text(font: "Fira Math")
 
 #show: uc.ucph-metropolis-theme.with(
   ty.config-info(

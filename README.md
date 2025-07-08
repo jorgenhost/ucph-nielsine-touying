@@ -165,6 +165,7 @@ typst init @preview/ucph-nielsine-touying
 This will create a directory with the template name on your current path.
 
 ## Development
+Clone the following repository:
 
 ```
 $ git clone https://github.com/jorgenhost/ucph-nielsine-touying

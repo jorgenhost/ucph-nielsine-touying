@@ -1,17 +1,20 @@
-#import "@preview/ucph-nielsine-touying" as uc
+#import "@preview/ucph-nielsine-touying:0.1.0" as uc
 #import "@preview/touying:0.6.1" as ty
 #import "@preview/numbly:0.1.0": numbly
 #import "@preview/pinit:0.2.2" as pi
+#set text(font: "Fira Sans")
+// Consider Fira Math as math font?
+// #show math.equation: set text(font: "Fira Math")
 
 #show: uc.ucph-metropolis-theme.with(
-  header-right: align(right, image("assets/ucph-1-seal.svg", height: 1.1cm)),
+  header-right: align(right, image("../assets/ucph-1-seal.svg", height: 1.1cm)),
   ty.config-info(
     title: [Title],
     subtitle: [Subtitle],
     author: [Authors],
     date: datetime.today(),
     institution: [University of Copenhagen],
-    logo: image("assets/ucph-1-seal.svg"),
+    logo: image("../assets/ucph-1-seal.svg"),
   ),
   /// Uncomment this if you have animations in your slides and only want to keep the last subslide
   // ty.config-common(
