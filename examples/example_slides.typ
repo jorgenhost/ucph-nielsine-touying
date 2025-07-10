@@ -4,7 +4,7 @@
 #import "@preview/pinit:0.2.2" as pi
 #set text(font: "Fira Sans")
 // Consider Fira Math as math font?
-// #show math.equation: set text(font: "Fira Math")
+#show math.equation: set text(font: "Fira Math")
 
 #show: uc.ucph-metropolis-theme.with(
   header-right: align(right, image("../assets/ucph-1-seal.svg", height: 1.1cm)),
@@ -19,7 +19,11 @@
   /// Uncomment this if you have animations in your slides and only want to keep the last subslide
   // ty.config-common(
   //   handout: true
-  // )
+  // ),
+  ty.config-colors(
+    primary: uc.colors.ucph-dark.red,
+    secondary: uc.colors.ucph-medium.blue,
+  ),
 )
 
 #uc.title-slide()

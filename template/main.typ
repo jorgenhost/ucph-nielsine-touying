@@ -2,7 +2,7 @@
 #import "@preview/touying:0.6.1" as ty
 #set text(font: "Fira Sans")
 // Consider Fira Math as math font?
-// #show math.equation: set text(font: "Fira Math")
+#show math.equation: set text(font: "Fira Math")
 
 #show: uc.ucph-metropolis-theme.with(
   ty.config-info(
