@@ -1,29 +1,37 @@
-#import "@preview/ucph-nielsine-touying:0.1.0" as uc
+// #import "@preview/ucph-nielsine-touying:0.1.0" as uc
+#import "@preview/theorion:0.3.3" as th
+#import th.cosmos.clouds as thc
+#import "../src/lib.typ" as uc
 #import "@preview/touying:0.6.1" as ty
-#import "@preview/numbly:0.1.0": numbly
 #import "@preview/pinit:0.2.2" as pi
-#set text(font: "Fira Sans")
-// Consider Fira Math as math font?
+#set text(font: "Fira Sans", weight: "light")
 #show math.equation: set text(font: "Fira Math")
+#show: th.show-theorion
+#th.set-inherited-levels(1)
+#set heading(numbering: "1.1")
+#show heading.where(level: 1): set heading(numbering: none)
+#show heading.where(level: 2): set heading(numbering: none)
+#counter(heading).step(level: 1)
 
 #show: uc.ucph-metropolis-theme.with(
-  header-right: align(right, image("../assets/ucph-1-seal.svg", height: 1.1cm)),
   ty.config-info(
     title: [Title],
     subtitle: [Subtitle],
     author: [Authors],
     date: datetime.today(),
     institution: [University of Copenhagen],
-    logo: image("../assets/ucph-1-seal.svg"),
+    logo: uc.logos.seal,
   ),
-  /// Uncomment this if you have animations in your slides and only want to keep the last subslide
-  // ty.config-common(
-  //   handout: true
-  // ),
+  ty.config-common(frozen-counters: (th.theorem-counter,)),
   ty.config-colors(
     primary: uc.colors.ucph-dark.red,
-    secondary: uc.colors.ucph-medium.blue,
+    secondary: uc.colors.ucph-medium.grey,
+    bold-color: uc.colors.ucph-dark.grey,
   ),
+  // Uncomment this if you have animations in your slides and only want to keep the last subslide
+  // ty.config-common(
+  //   handout: true,
+  // ),
 )
 
 #uc.title-slide()
@@ -172,6 +180,53 @@ $
   Wake up with a gradient!
 ]
 
+
+#let pinit-highlight-equation-from(
+  height: 2em,
+  pos: bottom,
+  fill: rgb(0, 180, 255),
+  highlight-pins,
+  point-pin,
+  body,
+) = {
+  pi.pinit-highlight(..highlight-pins, dy: -0.9em, fill: rgb(..fill.components().slice(0, -1), 40))
+  pi.pinit-point-from(
+    fill: fill,
+    pin-dx: 0em,
+    pin-dy: if pos == bottom { 0.5em } else { -0.9em },
+    body-dx: 0pt,
+    body-dy: if pos == bottom { -1.7em } else { -1.6em },
+    offset-dx: 0em,
+    offset-dy: if pos == bottom { 0.8em + height } else { -0.6em - height },
+    point-pin,
+    rect(inset: 0.5em, stroke: (bottom: 0.12em + fill), {
+      set text(fill: fill)
+      body
+    }),
+  )
+}
+
+Equation written out directly (for comparison):
+
+$ (q_T^* p_T)/p_E p_E^* >= (c + q_T^* p_T^*)(1+r^*)^(2N) $
+
+Laid out with pinit:
+
+#v(3.5em)
+
+$ (#pi.pin(1)q_T^* p_T#pi.pin(2))/(#pi.pin(3)p_E#pi.pin(4))#pi.pin(5)p_E^*#pi.pin(6) >= (c + q_T^* p_T^*)(1+r^*)^(2N) $
+
+#v(5em)
+
+#pinit-highlight-equation-from((1, 2, 3, 4), (3, 4), height: 3.5em, pos: bottom, fill: rgb(0, 180, 255))[
+  quantity of Terran goods
+]
+
+#pinit-highlight-equation-from((5, 6), (5, 6), height: 2.5em, pos: top, fill: rgb(150, 90, 170))[
+  price of Terran goods, on Trantor
+]
+
+Paragraph after the equation.
 
 == References
 #set text(size: 14pt)
