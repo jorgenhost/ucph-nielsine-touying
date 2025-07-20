@@ -89,11 +89,11 @@
 /// Example:
 ///
 /// ```typst
-/// #import "@preview/ucph-nielsine-slides:0.1.0" as uc
+/// #import "@preview/ucph-nielsine-slides:0.1.1" as uc
 /// #show: ucph-metropolis-theme.with(
 ///   config-info(
 ///     title: [Title],
-///     logo: image("assets/ucph-1-seal.svg"),
+///     logo: uc.logos.seal,
 ///   ),
 /// )
 ///
@@ -210,18 +210,19 @@
   ty.touying-slide(self: self, config: config, std.align(align, body))
 })
 
-/// Touying ucph-metropolis theme.
+/// Touying metropolis theme styled to fit the University of Copenhagen.
 ///
 /// The default colors:
 ///
 /// ```typ
-/// config-colors(
-///   primary: rgb("901a1E"),
+/// ty.config-colors(
+///   primary: rgb("901a1E"), // The "default" dark red UCPH color
 ///   primary-light: rgb("#d6c6b7"),
-///   secondary: rgb("0a5963"),
+///   secondary: rgb("666666"), // "Medium" UCPH grey
 ///   neutral-lightest: rgb("#fafafa"),
 ///   neutral-dark: rgb("#23373b"),
 ///   neutral-darkest: rgb("#23373b"),
+///   bold-color: black
 /// )
 /// ```
 ///
@@ -237,12 +238,12 @@
 ///
 /// - footer-right (content, function): The right part of the footer. Default is `context utils.slide-counter.display() + " / " + utils.last-slide-number`.
 /// - footer-appendix-label (str): Suffix to put on the slide counter in the appendix. #link("https://github.com/spidersouris/touying-unistra-pristine/blob/8c19b94a20edbde35d06a8cb9c4fc4a1c3c8a79c/src/unistra.typ#L91-L106")[Based on] `touying-unistra-pristine`.
-///
-/// - footer-progress (boolean): Whether to show the progress bar in the footer. Default is `true`.
+/// - language (str): Specify language in the presentation. ("en" for English or "dk" for Danish currently supported)
+/// - footer-progress (boolean): Whether to show the progress. Default is `true`.
 #let ucph-metropolis-theme(
   aspect-ratio: "16-9",
   align: horizon,
-  language: none,
+  language: "en",
   header: self => ty.utils.display-current-heading(
     setting: ty.utils.fit-to-width.with(grow: false, 100%),
     depth: self.slide-level,
@@ -255,7 +256,7 @@
   ..args,
   body,
 ) = {
-  set text(size: 18pt)
+  set text(size: 18pt, lang: language)
   show ref: it => {
     show regex("\d{4}"): set text(blue)
     it
@@ -283,7 +284,7 @@
       neutral-lightest: rgb("#fafafa"),
       neutral-dark: rgb("#23373b"),
       neutral-darkest: rgb("#23373b"),
-      bold-color: colors.ucph-dark.red,
+      bold-color: black,
     ),
     // save the variables for later use
     ty.config-store(

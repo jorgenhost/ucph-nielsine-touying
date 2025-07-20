@@ -58,7 +58,7 @@
 
 
 #let palette-box(color, name, text-color: black) = {
-  rect(width: 7em, height: 5em, fill: color, inset: 1em, text(fill: text-color, size: 14pt, [
+  rect(width: 7em, height: 6em, fill: color, inset: 1em, text(fill: text-color, size: 14pt, [
     #name\
     #color.to-hex()
   ]))

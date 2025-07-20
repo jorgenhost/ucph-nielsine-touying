@@ -1,11 +1,19 @@
 // #import "@preview/ucph-nielsine-touying:0.1.0" as uc
 #import "../src/lib.typ" as uc
 #import "@preview/touying:0.6.1" as ty
+#import "@preview/theorion:0.3.3" as th
+#import th.cosmos.clouds as thc
+
+// Font settings
 #set text(font: "Fira Sans", weight: "light")
 #show math.equation: set text(font: "Fira Math")
 
+// Settings for theorion package
+#show: th.show-theorion
+#th.set-inherited-levels(0)
+
 #show: uc.ucph-metropolis-theme.with(
-  language: "en",
+  language: "en", // or "dk"
   ty.config-info(
     title: [Title],
     subtitle: [Subtitle],
@@ -14,15 +22,6 @@
     institution: [University of Copenhagen],
     logo: uc.logos.seal,
   ),
-  ty.config-colors(
-    primary: uc.colors.ucph-dark.red,
-    secondary: uc.colors.ucph-medium.grey,
-    bold-color: uc.colors.ucph-dark.grey,
-  ),
-  // Uncomment this if you have animations in your slides and only want to keep the last subslide
-  // ty.config-common(
-  //   handout: true,
-  // ),
 )
 
 #uc.title-slide()
@@ -34,10 +33,19 @@
 == First slide
 Wow, this is a slide.
 
-== Second slide
-wqewqe *123*
-
-
+= Examples
+== Example with `theorion`: OLS estimator
+#pagebreak()
+#thc.definition()[
+  The OLS estimator
+  $
+    hat(bold(beta)) = (bold(X)^T bold(X))^(-1) bold(X)^T bold(y)
+  $
+]
+#th.important-box(fill: uc.colors.ucph-dark.red)[
+  - This is very important.
+  - Remember this.
+]
 == Third slide
 #uc.slide(align: center + horizon, composer: (1fr, 1fr))[
   First column.
@@ -46,14 +54,9 @@ wqewqe *123*
 ]
 
 // A "focus" slide that is colored according to the primary color
-#uc.focus-slide(
-  [
-    Wake up!
-  ],
-  // Uncomment if you want to change the standard logo. Place with args: dx: -15pt, dy: -8pt
-  //
-  // logo: place(right, uc.logos.standard-dk-negative, dx: -15pt, dy: -8pt),
-)
+#uc.focus-slide([
+  Wake up!
+])
 
 // You can change the coloring to be gradient of UCPH colors instead
 
@@ -65,12 +68,23 @@ wqewqe *123*
   fill: my-gradient,
 )
 
-
 = Colors
+== Color scheme
+Colors of the University of Copenhagen can be retrieved by specifying:
+```typ
+#import "@preview/ucph-nielsine-touying:0.1.1" as uc
+// Darks
+uc.colors.ucph-dark.red // the default dark red color of UCPH
+// Medium
+uc.colors.ucph-medium // ...
+// Light
+uc.colors.ucph-light // ...
 
-== Let me show you the colors
+```
+#pagebreak()
 
-#uc.show-color-pallette()
+#align(center, uc.show-color-pallette())
+
 
 == References
 #set text(size: 14pt)
