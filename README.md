@@ -1,35 +1,40 @@
 # `ucph-nielsine-touying`
-<div align="center">Version 0.1.0</div>
 
 Slide template built on Touying for the University of Copenhagen.
 
 _This theme is **NOT** affiliated with the University of Copenhagen. The logo is the property of the University of Copenhagen._
 
-**ucph-nielsine-touying** is a [Touying](https://github.com/touying-typ/touying) theme for creating presentation slides in [Typst](https://github.com/typst/typst), adhering to the core principles of the [style guide of the University of Copenhagen, Denmark](https://designguide.ku.dk/) (Danish). It is an **unofficial** theme and it is **NOT** affiliated with the University of Copenhagen.
+**ucph-nielsine-touying** is a [Touying](https://github.com/touying-typ/touying) theme for creating presentation slides in [Typst](https://github.com/typst/typst), adhering to the core principles of the [style guide of the University of Copenhagen, Denmark](https://designguide.ku.dk/) (Danish). It is an **unofficial** theme.
 
-This theme was partly created using components from [typslides](https://github.com/manjavacas/typslides) and [touying-unistra-pristine](https://github.com/spidersouris/touying-unistra-pristine).
+This theme was partly created using components from [touying-unistra-pristine](https://github.com/spidersouris/touying-unistra-pristine).
 
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on the typst web app. 
 
 ```typ
-#import "@preview/ucph-nielsine-touying:0.1.0" as uc
+#import "@preview/ucph-nielsine-touying:0.1.1" as uc
 #import "@preview/touying:0.6.1" as ty
 
-#show: uc.ucph-metropolis-theme.with(ty.config-info(
-  title: [Title],
-  subtitle: [Subtitle],
-  author: [Authors],
-  date: datetime.today(),
-  institution: [University of Copenhagen],
-  logo: image("assets/ucph-1-seal.svg"),
-))
+// Font settings
+#set text(font: "Fira Sans", weight: "light")
+#show math.equation: set text(font: "Fira Math")
+
+#show: uc.ucph-metropolis-theme.with(
+  language: "en", // or "dk"
+  ty.config-info(
+    title: [Title],
+    subtitle: [Subtitle],
+    author: [Authors],
+    date: datetime.today(),
+    institution: [University of Copenhagen],
+    logo: uc.logos.seal,
+  ),
+)
 
 #uc.title-slide()
 
 = First section
-
 == First slide
 Wow, this is a slide.
 
@@ -44,113 +49,81 @@ Wow, this is a slide.
 
 ## Usage
 
-It is strongly recommended to explore the [documentation](https://touying-typ.github.io/) of the `touying` package to learn more about the functionality. This includes, but is not limited to, animations and compatibility with other Typst packages like [`pinit`](https://typst.app/universe/package/pinit/). A more extensive example of the slide template is available [here](https://github.com/jorgenhost/ucph-nielsine-touying/tree/main/examples).
+Configuration is done via `Touying`'s `config-xxx` options which is then passed to the `ucph-metropolis` function. It is strongly recommended to explore the [documentation](https://touying-typ.github.io/) of the `touying` package to learn more about the core functionality that this template is built around. This includes, but is not limited to, bibliography/references, animations and compatibility with other Typst packages like [`pinit`](https://typst.app/universe/package/pinit/) and [`theorion`](https://typst.app/universe/package/theorion/). Check out the example below to learn more about the functionality:
 
 ```typ
-#import "@preview/ucph-nielsine-touying:0.1.0" as uc
+#import "@preview/ucph-nielsine-touying:0.1.1" as uc
+#import "@preview/theorion:0.3.3" as th
+#import th.cosmos.clouds as thc
 #import "@preview/touying:0.6.1" as ty
 #import "@preview/pinit:0.2.2" as pi
 
-#show: uc.ucph-metropolis-theme.with(
-  header-right: align(right, image("assets/ucph-1-seal.svg", height: 1.1cm)),
-  ty.config-info(
-    title: [Title],
-    subtitle: [Subtitle],
-    author: [Authors],
-    date: datetime.today(),
-    institution: [University of Copenhagen],
-    logo: image("assets/ucph-1-seal.svg"),
-  ),
-  // Uncomment this if you have animations in your slides and only want to keep the last subslide
-  // ty.config-common(
-  //   handout: true
-  // )
-)
+// Font settings
+#set text(font: "Fira Sans", weight: "light")
+#show math.equation: set text(font: "Fira Math")
+
+// Settings for theorion package
+#show: th.show-theorion
+#th.set-inherited-levels(0)
+
+#show: uc.ucph-metropolis-theme.with(language: "en", ty.config-info(
+  title: [Title],
+  subtitle: [Subtitle],
+  author: [Authors],
+  date: datetime.today(),
+  institution: [University of Copenhagen],
+  logo: uc.logos.seal,
+))
 
 #uc.title-slide()
 
-// If you want a table of contents
-// #uc.components.adaptive-columns(outline(indent: 1em))
 
 = First section
 
 == First slide
-Wow, this is a slide.
+_Wow, this is a slide._
 
-== Second slide
+#cite(<schelling1971dynamic>, form: "prose") proposed a model to describe segregation dynamics that has a striking proposition: Despite "tolerant" attitudes towards people of different types, patterns of segregation will still persist.
+
+= Examples
+== Example: `pinit`
 The music experience has been #pi.pin(1)cancelled#pi.pin(2).
 
 #pi.pinit-highlight(1, 2)
 
 #pi.pinit-point-from(2)[This quote is from the Severance TV-show]
 
-== Animations
-#uc.slide[
-  Touying equation with pause:
 
+== Example: `theorion`
+#thc.definition()[
+  The OLS estimator
   $
-    f(x) & = #ty.pause x^2 + 2x + 1 \
-         & = #ty.pause (x + 1)^2    \
+    hat(bold(beta)) = (bold(X)^T bold(X))^(-1) bold(X)^T bold(y)
   $
-
-  #ty.meanwhile
-
-  Touying equation is very simple.
 ]
-
-== Complex Animations
-#uc.slide(
-  repeat: 3,
-  self => [
-    #let (uncover, only, alternatives) = ty.utils.methods(self)
-
-    At subslide #self.subslide, we can
-
-    use #uncover("2-")[`#uncover` function] for reserving space,
-
-    use #only("2-")[`#only` function] for not reserving space,
-
-    #alternatives[call `#only` multiple times \u{717}][use `#alternatives` function #sym.checkmark] for choosing one of the alternatives.
-  ],
-)
-
-== Third slide
-#uc.slide(align: center + horizon, composer: (1fr, 1fr))[
-  First column.
-][
-  Second column. #cite(<schelling1971dynamic>, form: "prose")#footnote("a footnote")
-]
-
-
-= The OLS estimator
-== Derivation of the OLS estimator
-#uc.slide(align: left)[
-  #align(center + top)[
-    #uc.framed(title: "The OLS estimator", block-width: 60%)[
-      $
-        hat(bold(beta)) = (bold(X)^T bold(X))^(-1) bold(X)^T bold(y)
-      $
-    ]]
-
+#th.important-box(fill: uc.colors.ucph-dark.red)[
   - This is very important.
   - Remember this.
 ]
-
-
-#uc.focus-slide()[
-  Wake up!
+#thc.theorem()[
+  #lorem(5)
+]
+#thc.proposition()[
+  #lorem(5)
 ]
 
 #let my-gradient = gradient.linear(uc.colors.ucph-dark.red, uc.colors.ucph-dark.blue, angle: 45deg)
 
 #uc.focus-slide(fill: my-gradient)[
-  Wake up with a gradient!
+  Please pay attention!
 ]
 
 == References
 #set text(size: 14pt)
 #bibliography("bibliography.bib", style: "harvard-cite-them-right", title: none)
 ```
+A more extensive example of the slide template is available [here](https://github.com/jorgenhost/ucph-nielsine-touying/tree/main/examples). 
+
 
 <kbd><img src="assets/slide4.png" width="400"></kbd><kbd><img src="assets/slide5.png" width="400"></kbd>
 

@@ -1,7 +1,7 @@
-// #import "@preview/ucph-nielsine-touying:0.1.1" as uc
+// #import "../src/lib.typ" as uc
+#import "@preview/ucph-nielsine-touying:0.1.1" as uc
 #import "@preview/theorion:0.3.3" as th
 #import th.cosmos.clouds as thc
-#import "../src/lib.typ" as uc
 #import "@preview/touying:0.6.1" as ty
 #import "@preview/pinit:0.2.2" as pi
 #import "funcs.typ" as f
@@ -85,11 +85,9 @@ $
 
 Paragraph after the equation.
 
-== Example: `theorion` (1)
+== Example: `theorion`
 #thc.definition()[
-  #lorem(
-    5,
-  )#footnote([You can tweak colors to your own liking by specifying ```typ#thc.definition(fill:  uc.colors.ucph-light.green)```])
+  #lorem(5)
 ]
 #thc.theorem()[
   #lorem(20)
