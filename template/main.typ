@@ -1,4 +1,4 @@
-#import "@preview/ucph-nielsine-touying:0.1.0" as uc
+#import "@preview/ucph-nielsine-touying:0.1.1" as uc
 #import "@preview/touying:0.6.1" as ty
 #import "@preview/theorion:0.3.3" as th
 #import th.cosmos.clouds as thc
@@ -88,5 +88,3 @@ uc.colors.ucph-light // ...
 == References
 #set text(size: 14pt)
 #bibliography("bibliography.bib", style: "harvard-cite-them-right", title: none)
-
-
