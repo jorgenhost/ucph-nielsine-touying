@@ -1,5 +1,4 @@
 #import "@preview/touying:0.6.1" as ty
-#import "colors.typ"
 // Helper function to get current section number
 #let get-current-section() = {
   context {
