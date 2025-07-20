@@ -303,6 +303,14 @@
   body
 }
 
+/// A highlighted text box to emphasize a point. No numbering.
+/// Based on #link("https://github.com/manjavacas/typslides/blob/a43e27b2cc69bf423fc25b4c140838d646975217/typslides.typ#L75-L130")[typslides].
+///
+/// - title (str): Title for text box. Default `none`.
+/// - back-color (color): Text box background color. Default `rgb("FBF7EE")`.
+/// - framed-color (color): Title background color. Default `rgb("#23373b")`.
+/// - block-width (ratio): Width of block/text-box
+/// - content (content): Content to render in text box.
 #let framed(
   title: none,
   back-color: rgb("FBF7EE"),
