@@ -30,11 +30,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 - logos.typ
+- Examples with `pinit`and `theorion`.
+- Language option - `en` or `dk` -> changes logo on `uc.focus-slide()` to Danish/English version. 
 
 ### Changed
 - Default font to [*Fira Sans*](https://fonts.google.com/specimen/Fira+Sans) and and [*Fira Math*](https://github.com/firamath/firamath).
 - Screenshots of template.
 - Logos are no longer included under `/assets`-folder in template, but are accessed as `uc.logos.seal`.
+- Color scheme: Secondary color is UCPH-medium gray.
 
 ### Fixed
 - Issue with heading (#1): Could not write in **BOLD**. 
