@@ -1,29 +1,40 @@
-#import "@preview/ucph-nielsine-touying:0.1.0" as uc
+// #import "../src/lib.typ" as uc
+#import "@preview/ucph-nielsine-touying:0.1.1" as uc
+#import "@preview/theorion:0.3.3" as th
+#import th.cosmos.clouds as thc
 #import "@preview/touying:0.6.1" as ty
-#import "@preview/numbly:0.1.0": numbly
 #import "@preview/pinit:0.2.2" as pi
-#set text(font: "Fira Sans")
-// Consider Fira Math as math font?
+#import "funcs.typ" as f
+
+// Font settings
+#set text(font: "Fira Sans", weight: "light")
 #show math.equation: set text(font: "Fira Math")
 
+// Settings for theorion package
+#show: th.show-theorion
+#th.set-inherited-levels(0)
+
 #show: uc.ucph-metropolis-theme.with(
-  header-right: align(right, image("../assets/ucph-1-seal.svg", height: 1.1cm)),
+  language: "en",
   ty.config-info(
     title: [Title],
     subtitle: [Subtitle],
     author: [Authors],
     date: datetime.today(),
     institution: [University of Copenhagen],
-    logo: image("../assets/ucph-1-seal.svg"),
+    logo: uc.logos.seal,
   ),
-  /// Uncomment this if you have animations in your slides and only want to keep the last subslide
-  // ty.config-common(
-  //   handout: true
-  // ),
+  ty.config-common(frozen-counters: (
+    th.theorem-counter,
+  )), // If you are using "animations", add this config option to stop touying from counting the same theorem multiple times
   ty.config-colors(
     primary: uc.colors.ucph-dark.red,
-    secondary: uc.colors.ucph-medium.blue,
+    secondary: uc.colors.ucph-medium.grey,
   ),
+  // Uncomment this if you have animations in your slides and only want to keep the last subslide
+  // ty.config-common(
+  //   handout: true,
+  // ),
 )
 
 #uc.title-slide()
@@ -36,60 +47,58 @@
 == First slide
 Wow, this is a slide.
 
-== Second slide
+== Example: `pinit` (1)
 The music experience has been #pi.pin(1)cancelled#pi.pin(2).
 
 #pi.pinit-highlight(1, 2)
 
 #pi.pinit-point-from(2)[This quote is from the Severance TV-show]
 
-== Animations
-#uc.slide[
-  Touying equation with pause:
+== Example: `pinit` (2)
+Equation written out directly (for comparison):
 
-  $
-    f(x) & = #ty.pause x^2 + 2x + 1 & = #ty.pause (x + 1)^2
-  $
+$ (q_t^* p_t)/(1+r)^t >= C_0 + sum_(i=1)^T (c_i)/(1+r)^i $
 
-  #ty.meanwhile
+Laid out with pinit:
 
-  Touying equation is very simple.
+#v(3.5em)
+
+$
+  (#pi.pin(1)q_t^* p_t#pi.pin(2))/(#pi.pin(3) (1 + r)^t #pi.pin(4)) >= C_0 + #pi.pin(5)sum_(i=1)^T (c_i)/(1+r)^i#pi.pin(6)
+$
+
+#v(5em)
+
+#f.pinit-highlight-equation-from((1, 2), (1, 2), height: 3.5em, pos: top + left, fill: rgb(0, 180, 255))[
+  Optimal quantity of goods produced
 ]
 
-== Complex Animations
-#uc.slide(
-  repeat: 3,
-  self => [
-    #let (uncover, only, alternatives) = ty.utils.methods(self)
-
-    At subslide #self.subslide, we can
-
-    use #uncover("2-")[`#uncover` function] for reserving space,
-
-    use #only("2-")[`#only` function] for not reserving space,
-
-    #alternatives[call `#only` multiple times \u{717}][use `#alternatives` function #sym.checkmark] for choosing one of the alternatives.
-  ],
-)
-
-== Intermezzo
-If you have "animations" in your presentation, you can set "handout" to "true" in the config and only include the last subslide.
-```typ
-#import "@preview/ucph-nielsine-touying" as uc
-#import "@preview/touying:0.6.1" as ty
-show: uc.ucph-metropolis-theme.with(
-  // ...
-  ,
-ty.config-common(handout: true)
-)
-```
-
-== Slide with columns
-#uc.slide(align: center + horizon, composer: (1fr, 1fr))[
-  First column.
-][
-  Second column. #cite(<schelling1971dynamic>, form: "prose")#footnote("a footnote")
+#f.pinit-highlight-equation-from((3, 4), (3, 4), height: 2.5em, pos: bottom, fill: rgb("#c36f02"))[
+  Discount factor for time $t$
 ]
+
+#f.pinit-highlight-equation-from((5, 6), (5, 6), dy: -1.7em, height: 2em, extended-height: 3em, pos: right, fill: rgb(
+  "#5d00ff",
+))[
+  Present value of future operating costs
+]
+
+Paragraph after the equation.
+
+== Example: `theorion`
+#thc.definition()[
+  #lorem(5)
+]
+#thc.theorem()[
+  #lorem(20)
+]
+#thc.proposition()[
+  #lorem(20)
+]
+#thc.lemma()[
+  #lorem(20)
+]
+
 
 = The OLS estimator
 == Derivation of the OLS estimator
@@ -143,23 +152,82 @@ $
   hat(bold(beta)) &= (bold(X)^T bold(X))^(-1) bold(X)^T bold(y)
 $
 
-#uc.slide(align: left)[
-  #align(center + top)[
-    #uc.framed(title: "The OLS estimator", block-width: 60%)[
-      $
-        hat(bold(beta)) = (bold(X)^T bold(X))^(-1) bold(X)^T bold(y)
-      $
-    ]]
-
+#pagebreak()
+#thc.definition()[
+  The OLS estimator
+  $
+    hat(bold(beta)) = (bold(X)^T bold(X))^(-1) bold(X)^T bold(y)
+  $
+]
+#th.important-box(fill: uc.colors.ucph-dark.red)[
   - This is very important.
   - Remember this.
 ]
 
+== Animations
+#uc.slide[
+  Touying equation with pause:
+
+  $
+    f(x) & = #ty.pause x^2 + 2x + 1 & = #ty.pause (x + 1)^2
+  $
+
+  #ty.meanwhile
+
+  Touying equation is very simple.
+]
+
+== Complex Animations
+#uc.slide(
+  repeat: 3,
+  self => [
+    #let (uncover, only, alternatives) = ty.utils.methods(self)
+
+    At subslide #self.subslide, we can
+
+    use #uncover("2-")[`#uncover` function] for reserving space,
+
+    use #only("2-")[`#only` function] for not reserving space,
+
+    #alternatives[call `#only` multiple times \u{717}][use `#alternatives` function #sym.checkmark] for choosing one of the alternatives.
+  ],
+)
+
+== Handout mode
+If you have "animations" in your presentation, you can set "handout" to "true" in the config and only include the last subslide.
+```typ
+#import "@preview/ucph-nielsine-touying:0.1.1" as uc
+#import "@preview/touying:0.6.1" as ty
+show: uc.ucph-metropolis-theme.with(
+  // ...
+  ,
+ty.config-common(handout: true)
+)
+```
+
+== Slide with columns
+#uc.slide(align: center + horizon, composer: (1fr, 1fr))[
+  First column.
+][
+  Second column. #cite(<schelling1971dynamic>, form: "prose")#footnote("a footnote")
+]
+
 = Colors
+== Color scheme
+Colors of the University of Copenhagen can be retrieved by specifying:
+```typ
+#import "@preview/ucph-nielsine-touying:0.1.1" as uc
+// Darks
+uc.colors.ucph-dark.red // the default dark red color of UCPH
+// Medium
+uc.colors.ucph-medium // ...
+// Light
+uc.colors.ucph-light // ...
 
-== Let me show you the colors
+```
+#pagebreak()
 
-#uc.show-color-pallette()
+#align(center, uc.show-color-pallette())
 
 #uc.focus-slide()[
   Wake up!
@@ -172,7 +240,6 @@ $
   Wake up with a gradient!
 ]
 
-
 == References
 #set text(size: 14pt)
 #bibliography("bibliography.bib", style: "harvard-cite-them-right", title: none)
@@ -180,10 +247,9 @@ $
 #show: ty.appendix
 = Appendix
 == Appendix
-123
-
-= Page layout
-== Page layout
+- If you look at the bottom right, the page counter starts with "A-" as this is an appendix.
+= Page anatomy
+==
 #let container = rect.with(height: 100%, width: 100%, inset: 0pt)
 #let innerbox = rect.with(stroke: (dash: "dashed"))
 

@@ -3,7 +3,7 @@
 
 #import "@preview/touying:0.6.1" as ty
 #import "colors.typ" as colors
-#import "utils.typ" as ucph-utils
+#import "utils.typ" as uc-utils
 
 /// Default slide function for the presentation.
 ///
@@ -89,11 +89,11 @@
 /// Example:
 ///
 /// ```typst
-/// #import "@preview/ucph-nielsine-slides:0.1.0" as uc
+/// #import "@preview/ucph-nielsine-slides:0.1.1" as uc
 /// #show: ucph-metropolis-theme.with(
 ///   config-info(
 ///     title: [Title],
-///     logo: image("assets/ucph-1-seal.svg"),
+///     logo: uc.logos.seal,
 ///   ),
 /// )
 ///
@@ -194,31 +194,35 @@
 #let focus-slide(
   config: (:),
   align: horizon + center,
-  logo: place(right, image("../assets/ucph-1-negative.svg", width: 15%), dx: -15pt, dy: -8pt),
   fill: colors.ucph-dark.red,
   body,
 ) = ty.touying-slide-wrapper(self => {
   self = ty.utils.merge-dicts(self, ty.config-common(freeze-slide-counter: true), ty.config-page(
     fill: fill,
     margin: 2em,
-    footer: logo,
+    footer: if self.store.language == "en" {
+      place(right, image("../assets/ucph-1-negative.svg", width: 15%), dx: -15pt, dy: -8pt)
+    } else if self.store.language == "dk" {
+      place(right, image("../assets/ucph-1-negative-dk.svg", width: 15%), dx: -15pt, dy: -8pt)
+    },
   ))
   set text(fill: self.colors.neutral-lightest, size: 1.5em)
   ty.touying-slide(self: self, config: config, std.align(align, body))
 })
 
-/// Touying ucph-metropolis theme.
+/// Touying metropolis theme styled to fit the University of Copenhagen.
 ///
 /// The default colors:
 ///
 /// ```typ
-/// config-colors(
-///   primary: rgb("901a1E"),
+/// ty.config-colors(
+///   primary: rgb("901a1E"), // The "default" dark red UCPH color
 ///   primary-light: rgb("#d6c6b7"),
-///   secondary: rgb("0a5963"),
+///   secondary: rgb("666666"), // "Medium" UCPH grey
 ///   neutral-lightest: rgb("#fafafa"),
 ///   neutral-dark: rgb("#23373b"),
 ///   neutral-darkest: rgb("#23373b"),
+///   bold-color: black
 /// )
 /// ```
 ///
@@ -234,24 +238,25 @@
 ///
 /// - footer-right (content, function): The right part of the footer. Default is `context utils.slide-counter.display() + " / " + utils.last-slide-number`.
 /// - footer-appendix-label (str): Suffix to put on the slide counter in the appendix. #link("https://github.com/spidersouris/touying-unistra-pristine/blob/8c19b94a20edbde35d06a8cb9c4fc4a1c3c8a79c/src/unistra.typ#L91-L106")[Based on] `touying-unistra-pristine`.
-///
-/// - footer-progress (boolean): Whether to show the progress bar in the footer. Default is `true`.
+/// - language (str): Specify language in the presentation. ("en" for English or "dk" for Danish currently supported)
+/// - footer-progress (boolean): Whether to show the progress. Default is `true`.
 #let ucph-metropolis-theme(
   aspect-ratio: "16-9",
   align: horizon,
+  language: "en",
   header: self => ty.utils.display-current-heading(
     setting: ty.utils.fit-to-width.with(grow: false, 100%),
     depth: self.slide-level,
   ),
   header-right: align(right, image("../assets/ucph-1-seal.svg", height: 1.2cm)),
-  footer: self => ucph-utils.section-links(self),
-  footer-right: self => ucph-utils.slide-counter-label(self),
+  footer: self => uc-utils.section-links(self),
+  footer-right: self => uc-utils.slide-counter-label(self),
   footer-progress: true,
   footer-appendix-label: "A-",
   ..args,
   body,
 ) = {
-  set text(size: 20pt)
+  set text(size: 18pt, lang: language)
   show ref: it => {
     show regex("\d{4}"): set text(blue)
     it
@@ -271,17 +276,19 @@
       slide-fn: slide,
       new-section-slide-fn: new-section-slide,
     ),
-    ty.config-methods(alert: (self: none, it) => text(fill: self.colors.primary, body)),
+    ty.config-methods(alert: uc-utils.alert-bold-color),
     ty.config-colors(
       primary: colors.ucph-dark.red,
       primary-light: rgb("#d6c6b7"),
-      secondary: colors.ucph-dark.petroleum,
+      secondary: colors.ucph-medium.grey,
       neutral-lightest: rgb("#fafafa"),
       neutral-dark: rgb("#23373b"),
       neutral-darkest: rgb("#23373b"),
+      bold-color: black,
     ),
     // save the variables for later use
     ty.config-store(
+      language: language,
       align: align,
       header: header,
       header-right: header-right,
@@ -296,6 +303,14 @@
   body
 }
 
+/// A highlighted text box to emphasize a point. No numbering.
+/// Based on #link("https://github.com/manjavacas/typslides/blob/a43e27b2cc69bf423fc25b4c140838d646975217/typslides.typ#L75-L130")[typslides].
+///
+/// - title (str): Title for text box. Default `none`.
+/// - back-color (color): Text box background color. Default `rgb("FBF7EE")`.
+/// - framed-color (color): Title background color. Default `rgb("#23373b")`.
+/// - block-width (ratio): Width of block/text-box
+/// - content (content): Content to render in text box.
 #let framed(
   title: none,
   back-color: rgb("FBF7EE"),

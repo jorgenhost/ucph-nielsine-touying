@@ -1,5 +1,4 @@
 #import "@preview/touying:0.6.1" as ty
-
 // Helper function to get current section number
 #let get-current-section() = {
   context {
@@ -61,3 +60,10 @@
     ty.utils.slide-counter.display() + " / " + ty.utils.last-slide-number
   }
 }
+
+/// Alert content with a primary or self-specified color.
+///
+/// Example: `config-methods(alert: ty.utils.alert-with-primary-color)`
+///
+/// -> content
+#let alert-bold-color(self: none, body) = text(fill: self.colors.bold-color, body)
