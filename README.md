@@ -135,7 +135,7 @@ Follow the initial steps from the official [repo](https://github.com/typst/typst
 ```
 typst init @preview/ucph-nielsine-touying
 ```
-This will create a directory with the template name on your current path. Note that you may need to install the [*Fira Sans*](https://fonts.google.com/specimen/Fira+Sans) and and [*Fira Math*](https://github.com/firamath/firamath) fonts used in this theme. 
+This will create a directory with the template name on your current path. Note that you may need to install the [*Fira Sans*](https://fonts.google.com/specimen/Fira+Sans) and [*Fira Math*](https://github.com/firamath/firamath) fonts used in this theme. 
 
 ## Development
 Clone the following repository:
