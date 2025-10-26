@@ -89,7 +89,7 @@
 /// Example:
 ///
 /// ```typst
-/// #import "@preview/ucph-nielsine-slides:0.1.1" as uc
+/// #import "@preview/ucph-nielsine-slides:0.1.2" as uc
 /// #show: ucph-metropolis-theme.with(
 ///   config-info(
 ///     title: [Title],
@@ -248,7 +248,7 @@
     setting: ty.utils.fit-to-width.with(grow: false, 100%),
     depth: self.slide-level,
   ),
-  header-right: align(right, image("../assets/ucph-1-seal.svg", height: 1.2cm)),
+  header-right: align(right, image("../assets/ucph-1-seal.svg", height: 1.1cm)),
   footer: self => uc-utils.section-links(self),
   footer-right: self => uc-utils.slide-counter-label(self),
   footer-progress: true,
@@ -262,10 +262,10 @@
     it
   }
 
-  show cite: it => {
-    show regex("\d{4}"): set text(blue)
-    it
-  }
+  // show cite: it => {
+  //   show regex("\d{4}"): set text(blue)
+  //   it
+  // }
   show: ty.touying-slides.with(
     ty.config-page(paper: "presentation-" + aspect-ratio, header-ascent: 30%, footer-descent: 30%, margin: (
       top: 3em,

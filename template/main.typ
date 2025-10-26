@@ -1,6 +1,6 @@
-#import "@preview/ucph-nielsine-touying:0.1.1" as uc
+#import "@preview/ucph-nielsine-touying:0.1.2" as uc
 #import "@preview/touying:0.6.1" as ty
-#import "@preview/theorion:0.3.3" as th
+#import "@preview/theorion:0.4.0" as th
 #import th.cosmos.clouds as thc
 
 // Font settings
@@ -71,7 +71,7 @@ Wow, this is a slide.
 == Color scheme
 Colors of the University of Copenhagen can be retrieved by specifying:
 ```typ
-#import "@preview/ucph-nielsine-touying:0.1.1" as uc
+#import "@preview/ucph-nielsine-touying:0.1.2" as uc
 // Darks
 uc.colors.ucph-dark.red // the default dark red color of UCPH
 // Medium

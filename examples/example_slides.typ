@@ -1,6 +1,5 @@
-// #import "../src/lib.typ" as uc
-#import "@preview/ucph-nielsine-touying:0.1.1" as uc
-#import "@preview/theorion:0.3.3" as th
+#import "@preview/ucph-nielsine-touying:0.1.2" as uc
+#import "@preview/theorion:0.4.0" as th
 #import th.cosmos.clouds as thc
 #import "@preview/touying:0.6.1" as ty
 #import "@preview/pinit:0.2.2" as pi
@@ -77,9 +76,17 @@ $
   Discount factor for time $t$
 ]
 
-#f.pinit-highlight-equation-from((5, 6), (5, 6), dy: -1.7em, height: 2em, extended-height: 3em, pos: right, fill: rgb(
-  "#5d00ff",
-))[
+#f.pinit-highlight-equation-from(
+  (5, 6),
+  (5, 6),
+  dy: -1.7em,
+  height: 2em,
+  extended-height: 3em,
+  pos: right,
+  fill: rgb(
+    "#5d00ff",
+  ),
+)[
   Present value of future operating costs
 ]
 
@@ -140,7 +147,7 @@ _Note_: By multiple a vector with itself transposed with just a scalar, or in th
 
 $
   diff/(diff bold(beta))(-2bold(beta)^T
-    bold(X)^T bold(y) + bold(beta)^T bold(X)^T bold(X) bold(beta)) & = 0 arrow.l.r                  \
+    bold(X)^T bold(y) + bold(beta)^T bold(X)^T bold(X) bold(beta)) & = 0 arrow.l.r \
                                     2 bold(X)^T bold(X) bold(beta) & = 2bold(X)^T bold(y) arrow.l.r \
                                        bold(X)^T bold(X)bold(beta) & = bold(X)^T bold(y) arrow.l.r
 $
@@ -196,7 +203,7 @@ $
 == Handout mode
 If you have "animations" in your presentation, you can set "handout" to "true" in the config and only include the last subslide.
 ```typ
-#import "@preview/ucph-nielsine-touying:0.1.1" as uc
+#import "@preview/ucph-nielsine-touying:0.1.2" as uc
 #import "@preview/touying:0.6.1" as ty
 show: uc.ucph-metropolis-theme.with(
   // ...
@@ -216,7 +223,7 @@ ty.config-common(handout: true)
 == Color scheme
 Colors of the University of Copenhagen can be retrieved by specifying:
 ```typ
-#import "@preview/ucph-nielsine-touying:0.1.1" as uc
+#import "@preview/ucph-nielsine-touying:0.1.2" as uc
 // Darks
 uc.colors.ucph-dark.red // the default dark red color of UCPH
 // Medium
@@ -240,6 +247,7 @@ uc.colors.ucph-light // ...
   Wake up with a gradient!
 ]
 
+= References
 == References
 #set text(size: 14pt)
 #bibliography("bibliography.bib", style: "harvard-cite-them-right", title: none)

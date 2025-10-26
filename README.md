@@ -13,7 +13,7 @@ This theme was partly created using components from [touying-unistra-pristine](h
 These instructions will get you a copy of the project up and running on the typst web app. 
 
 ```typ
-#import "@preview/ucph-nielsine-touying:0.1.1" as uc
+#import "@preview/ucph-nielsine-touying:0.1.2" as uc
 #import "@preview/touying:0.6.1" as ty
 
 // Font settings
@@ -52,8 +52,8 @@ Wow, this is a slide.
 Configuration is done via `Touying`'s `config-xxx` options which is then passed to the `ucph-metropolis` function. It is strongly recommended to explore the [documentation](https://touying-typ.github.io/) of the `touying` package to learn more about the core functionality that this template is built around. This includes, but is not limited to, bibliography/references, animations and compatibility with other Typst packages like [`pinit`](https://typst.app/universe/package/pinit/) and [`theorion`](https://typst.app/universe/package/theorion/). Check out the example below to learn more about the functionality:
 
 ```typ
-#import "@preview/ucph-nielsine-touying:0.1.1" as uc
-#import "@preview/theorion:0.3.3" as th
+#import "@preview/ucph-nielsine-touying:0.1.2" as uc
+#import "@preview/theorion:0.4.0" as th
 #import th.cosmos.clouds as thc
 #import "@preview/touying:0.6.1" as ty
 #import "@preview/pinit:0.2.2" as pi
