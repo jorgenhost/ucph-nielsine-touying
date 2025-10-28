@@ -26,6 +26,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Security
 
+## [0.1.2] - 2025-10-28
+
+### Changed
+- Default compiler to typst 0.14.0.
+- Updated optional dependencies (`theorion`).
+
+### Fixed 
+- No bold text for current section.
+- White cite color in heading, blue in main text.
+
 ## [0.1.1] - 2025-07-21
 
 ### Added

@@ -32,9 +32,9 @@
     secondary: uc.colors.ucph-medium.grey,
   ),
   // Uncomment this if you have animations in your slides and only want to keep the last subslide
-  ty.config-common(
-    handout: true,
-  ),
+  // ty.config-common(
+  //   handout: true,
+  // ),
 )
 
 #uc.title-slide()
