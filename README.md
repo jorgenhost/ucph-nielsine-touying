@@ -53,7 +53,7 @@ Configuration is done via `Touying`'s `config-xxx` options which is then passed 
 
 ```typ
 #import "@preview/ucph-nielsine-touying:0.1.2" as uc
-#import "@preview/theorion:0.4.0" as th
+#import "@preview/theorion:0.4.1" as th
 #import th.cosmos.clouds as thc
 #import "@preview/touying:0.6.1" as ty
 #import "@preview/pinit:0.2.2" as pi
