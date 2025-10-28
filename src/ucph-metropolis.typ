@@ -47,6 +47,11 @@
     show: ty.components.cell.with(fill: self.colors.secondary, inset: 1em)
     set std.align(horizon)
     set text(fill: self.colors.neutral-lightest, weight: "medium", size: 1.2em)
+    show cite: it => {
+      show regex("\d{4}"): set text(white)
+      it
+    }
+    
     ty.components.left-and-right(
       {
         if title != auto {
@@ -257,15 +262,11 @@
   body,
 ) = {
   set text(size: 18pt, lang: language)
-  show ref: it => {
+  show cite: it => {
     show regex("\d{4}"): set text(blue)
     it
   }
-
-  // show cite: it => {
-  //   show regex("\d{4}"): set text(blue)
-  //   it
-  // }
+    
   show: ty.touying-slides.with(
     ty.config-page(paper: "presentation-" + aspect-ratio, header-ascent: 30%, footer-descent: 30%, margin: (
       top: 3em,

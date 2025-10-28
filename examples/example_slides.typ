@@ -1,4 +1,5 @@
-#import "@preview/ucph-nielsine-touying:0.1.2" as uc
+// #import "@preview/ucph-nielsine-touying:0.1.2" as uc
+#import "../src/lib.typ" as uc
 #import "@preview/theorion:0.4.0" as th
 #import th.cosmos.clouds as thc
 #import "@preview/touying:0.6.1" as ty
@@ -45,6 +46,8 @@
 
 == First slide
 Wow, this is a slide.
+
+= Examples
 
 == Example: `pinit` (1)
 The music experience has been #pi.pin(1)cancelled#pi.pin(2).
@@ -93,21 +96,23 @@ $
 Paragraph after the equation.
 
 == Example: `theorion`
+
 #thc.definition()[
-  #lorem(5)
+  The OLS estimator
+  $
+    hat(bold(beta)) = (bold(X)^T bold(X))^(-1) bold(X)^T bold(y)
+  $
+]
+#th.important-box(fill: uc.colors.ucph-dark.red)[
+  - Remember this!
 ]
 #thc.theorem()[
-  #lorem(20)
+  #lorem(5)
 ]
 #thc.proposition()[
-  #lorem(20)
-]
-#thc.lemma()[
-  #lorem(20)
+  #lorem(5)
 ]
 
-
-= The OLS estimator
 == Derivation of the OLS estimator
 For a multiple linear regression model, the equation can be written in matrix form as:
 
@@ -160,16 +165,7 @@ $
 $
 
 #pagebreak()
-#thc.definition()[
-  The OLS estimator
-  $
-    hat(bold(beta)) = (bold(X)^T bold(X))^(-1) bold(X)^T bold(y)
-  $
-]
-#th.important-box(fill: uc.colors.ucph-dark.red)[
-  - This is very important.
-  - Remember this.
-]
+
 
 == Animations
 #uc.slide[
@@ -212,7 +208,7 @@ ty.config-common(handout: true)
 )
 ```
 
-== Slide with columns
+== Slide with columns #cite(<schelling1971dynamic>, form: "prose")
 #uc.slide(align: center + horizon, composer: (1fr, 1fr))[
   First column.
 ][
