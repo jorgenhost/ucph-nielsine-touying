@@ -44,7 +44,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Language option - `en` or `dk` -> changes logo on `uc.focus-slide()` to Danish/English version. 
 
 ### Changed
-- Default font to [*Fira Sans*](https://fonts.google.com/specimen/Fira+Sans) and and [*Fira Math*](https://github.com/firamath/firamath).
+- Default font to [*Fira Sans*](https://fonts.google.com/specimen/Fira+Sans) and [*Fira Math*](https://github.com/firamath/firamath).
 - Screenshots of template.
 - Logos are no longer included under `/assets`-folder in template, but are accessed as `uc.logos.seal`.
 - Color scheme: Secondary color is UCPH-medium gray.
@@ -72,3 +72,4 @@ in comparison to the previous release
 [Unreleased]: https://github.com/jorgenhost/ucph-nielsine-touying/compare/v0.1.0...HEAD
 [0.1.0]: https://github.com/jorgenhost/ucph-nielsine-touying/releases/tag/v0.1.0
 [0.1.1]: https://github.com/jorgenhost/ucph-nielsine-touying/releases/tag/v0.1.1
+[0.1.2]: https://github.com/jorgenhost/ucph-nielsine-touying/releases/tag/v0.1.2
