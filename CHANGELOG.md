@@ -29,7 +29,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [0.1.2] - 2025-10-28
 
 ### Changed
-- Default compiler to typst 0.14.0.
+- [Works with `typst` 0.14.0].
 - Updated optional dependencies (`theorion`).
 
 ### Fixed 
