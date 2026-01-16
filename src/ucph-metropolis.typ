@@ -4,7 +4,7 @@
 #import "@preview/touying:0.6.1" as ty
 #import "colors.typ" as colors
 #import "utils.typ" as uc-utils
-
+#import "logos.typ" as uc-logos
 /// Default slide function for the presentation.
 ///
 /// - title (string): The title of the slide. Default is `auto`.
@@ -44,9 +44,9 @@
   }
   let header(self) = {
     set std.align(top)
-    show: ty.components.cell.with(fill: self.colors.secondary, inset: 1em)
+    show: ty.components.cell.with(fill: self.colors.secondary, inset: 1em, height: self.store.header-block-size)
     set std.align(horizon)
-    set text(fill: self.colors.neutral-lightest, weight: "medium", size: 1.2em)
+    set text(fill: self.colors.neutral-lightest, weight: "medium", size: self.store.header-text-size)
     show cite: it => {
       show regex("\d{4}"): set text(white)
       it
@@ -206,9 +206,9 @@
     fill: fill,
     margin: 2em,
     footer: if self.store.language == "en" {
-      place(right, image("../assets/ucph-1-negative.svg", width: 15%), dx: -15pt, dy: -8pt)
+      place(right, image(uc-logos.logo-standard-negative, width: 15%), dx: -15pt, dy: -8pt)
     } else if self.store.language == "dk" {
-      place(right, image("../assets/ucph-1-negative-dk.svg", width: 15%), dx: -15pt, dy: -8pt)
+      place(right, image(uc-logos.logo-standard-dk-negative, width: 15%), dx: -15pt, dy: -8pt)
     },
   ))
   set text(fill: self.colors.neutral-lightest, size: 1.5em)
@@ -253,7 +253,9 @@
     setting: ty.utils.fit-to-width.with(grow: false, 100%),
     depth: self.slide-level,
   ),
-  header-right: align(right, image("../assets/ucph-1-seal.svg", height: 1.1cm)),
+  header-block-size: 3em,
+  header-text-size: 1.5em,
+  header-right: self => align(right, image(uc-logos.logo-seal-path, height: self.store.header-block-size*0.5)),
   footer: self => uc-utils.section-links(self),
   footer-right: self => uc-utils.slide-counter-label(self),
   footer-progress: true,
@@ -291,6 +293,8 @@
     ty.config-store(
       language: language,
       align: align,
+      header-block-size: header-block-size,
+      header-text-size: header-text-size,
       header: header,
       header-right: header-right,
       footer: footer,

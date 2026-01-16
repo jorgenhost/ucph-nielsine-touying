@@ -1,4 +1,5 @@
-#import "@preview/ucph-nielsine-touying:0.1.2" as uc
+// #import "@preview/ucph-nielsine-touying:0.1.2" as uc
+#import "../src/lib.typ" as uc
 #import "@preview/touying:0.6.1" as ty
 #import "@preview/theorion:0.4.1" as th
 #import th.cosmos.clouds as thc
