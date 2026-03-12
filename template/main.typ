@@ -1,12 +1,11 @@
-// #import "@preview/ucph-nielsine-touying:0.1.2" as uc
+// #import "@preview/ucph-nielsine-touying:0.1.3" as uc
 #import "../src/lib.typ" as uc
-#import "@preview/touying:0.6.1" as ty
+#import "@preview/touying:0.6.3" as ty
 #import "@preview/theorion:0.4.1" as th
 #import th.cosmos.clouds as thc
 
 // Font settings
 #set text(font: "Fira Sans", weight: "light")
-#show math.equation: set text(font: "Fira Math")
 
 // Settings for theorion package
 #show: th.show-theorion
@@ -27,7 +26,7 @@
 #uc.title-slide()
 
 // If you want a table of contents
-// #uc.components.adaptive-columns(outline(indent: 1em))
+// #ty.components.adaptive-columns(outline(indent: 1em))
 
 = First section
 == First slide
@@ -72,7 +71,7 @@ Wow, this is a slide.
 == Color scheme
 Colors of the University of Copenhagen can be retrieved by specifying:
 ```typ
-#import "@preview/ucph-nielsine-touying:0.1.2" as uc
+#import "@preview/ucph-nielsine-touying:0.1.3" as uc
 // Darks
 uc.colors.ucph-dark.red // the default dark red color of UCPH
 // Medium
@@ -87,5 +86,7 @@ uc.colors.ucph-light // ...
 
 
 == References
+#uc.slide[
 #set text(size: 14pt)
 #bibliography("bibliography.bib", style: "harvard-cite-them-right", title: none)
+]

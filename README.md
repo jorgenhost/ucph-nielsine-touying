@@ -11,12 +11,11 @@ This theme was partly created using components from [touying-unistra-pristine](h
 These instructions will get you a copy of the project up and running on the typst web app. 
 
 ```typ
-#import "@preview/ucph-nielsine-touying:0.1.2" as uc
-#import "@preview/touying:0.6.1" as ty
+#import "@preview/ucph-nielsine-touying:0.1.3" as uc
+#import "@preview/touying:0.6.3" as ty
 
 // Font settings
 #set text(font: "Fira Sans", weight: "light")
-#show math.equation: set text(font: "Fira Math")
 
 #show: uc.ucph-metropolis-theme.with(
   language: "en", // or "dk"
@@ -50,15 +49,14 @@ Wow, this is a slide.
 Configuration is done via `Touying`'s `config-xxx` options which is then passed to the `ucph-metropolis` function. It is strongly recommended to explore the [documentation](https://touying-typ.github.io/) of the `touying` package to learn more about the core functionality that this template is built around. This includes, but is not limited to, bibliography/references, animations and compatibility with other Typst packages like [`pinit`](https://typst.app/universe/package/pinit/) and [`theorion`](https://typst.app/universe/package/theorion/). Check out the example below to learn more about the functionality:
 
 ```typ
-#import "@preview/ucph-nielsine-touying:0.1.2" as uc
+#import "@preview/ucph-nielsine-touying:0.1.3" as uc
 #import "@preview/theorion:0.4.1" as th
 #import th.cosmos.clouds as thc
-#import "@preview/touying:0.6.1" as ty
+#import "@preview/touying:0.6.3" as ty
 #import "@preview/pinit:0.2.2" as pi
 
 // Font settings
 #set text(font: "Fira Sans", weight: "light")
-#show math.equation: set text(font: "Fira Math")
 
 // Settings for theorion package
 #show: th.show-theorion
@@ -133,7 +131,7 @@ Follow the initial steps from the official [repo](https://github.com/typst/typst
 ```
 typst init @preview/ucph-nielsine-touying
 ```
-This will create a directory with the template name on your current path. Note that you may need to install the [*Fira Sans*](https://fonts.google.com/specimen/Fira+Sans) and [*Fira Math*](https://github.com/firamath/firamath) fonts used in this theme. 
+This will create a directory with the template name on your current path. 
 
 ## Development
 Clone the following repository:

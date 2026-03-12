@@ -1,4 +1,4 @@
-#import "@preview/touying:0.6.1" as ty
+#import "@preview/touying:0.6.3" as ty
 
 // Helper function to get current section number
 #let get-current-section() = {

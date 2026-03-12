@@ -1,7 +1,7 @@
 // This theme is inspired by https://github.com/matze/mtheme
 // The origin code was written by https://github.com/Enivex
 
-#import "@preview/touying:0.6.1" as ty
+#import "@preview/touying:0.6.3" as ty
 #import "colors.typ" as colors
 #import "utils.typ" as uc-utils
 #import "logos.typ" as uc-logos
@@ -206,9 +206,9 @@
     fill: fill,
     margin: 2em,
     footer: if self.store.language == "en" {
-      place(right, image(uc-logos.logo-standard-negative, width: 15%), dx: -15pt, dy: -8pt)
+      place(right, image(uc-logos.logo-standard-negative, width: 14%), dx: -15pt, dy: -8pt)
     } else if self.store.language == "dk" {
-      place(right, image(uc-logos.logo-standard-dk-negative, width: 15%), dx: -15pt, dy: -8pt)
+      place(right, image(uc-logos.logo-standard-dk-negative, width: 14%), dx: -15pt, dy: -8pt)
     },
   ))
   set text(fill: self.colors.neutral-lightest, size: 1.5em)
@@ -253,9 +253,9 @@
     setting: ty.utils.fit-to-width.with(grow: false, 100%),
     depth: self.slide-level,
   ),
-  header-block-size: 3em,
-  header-text-size: 1.5em,
-  header-right: self => align(right, image(uc-logos.logo-seal-path, height: self.store.header-block-size*0.5)),
+  header-block-size: 2.7em,
+  header-text-size: 25pt,
+  header-right: self => align(right, image(uc-logos.logo-seal-path, height: self.store.header-block-size*0.55)),
   footer: self => uc-utils.section-links(self),
   footer-right: self => uc-utils.slide-counter-label(self),
   footer-progress: true,

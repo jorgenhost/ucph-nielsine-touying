@@ -1,13 +1,13 @@
-#import "@preview/ucph-nielsine-touying:0.1.2" as uc
+// #import "@preview/ucph-nielsine-touying:0.1.3" as uc
+#import "../src/lib.typ" as uc
 #import "@preview/theorion:0.4.1" as th
 #import th.cosmos.clouds as thc
-#import "@preview/touying:0.6.1" as ty
+#import "@preview/touying:0.6.3" as ty
 #import "@preview/pinit:0.2.2" as pi
 #import "funcs.typ" as f
 
 // Font settings
 #set text(font: "Fira Sans", weight: "light")
-#show math.equation: set text(font: "Fira Math")
 
 // Settings for theorion package
 #show: th.show-theorion
@@ -39,7 +39,7 @@
 #uc.title-slide()
 
 // If you want a table of contents
-// #uc.components.adaptive-columns(outline(indent: 1em))
+// #ty.components.adaptive-columns(outline(indent: 1em))
 
 = First section
 
@@ -150,7 +150,7 @@ _Note_: By multiple a vector with itself transposed with just a scalar, or in th
 #pagebreak()
 
 $
-  diff/(diff bold(beta))(-2bold(beta)^T
+  partial/(partial bold(beta))(-2bold(beta)^T
     bold(X)^T bold(y) + bold(beta)^T bold(X)^T bold(X) bold(beta)) & = 0 arrow.l.r \
                                     2 bold(X)^T bold(X) bold(beta) & = 2bold(X)^T bold(y) arrow.l.r \
                                        bold(X)^T bold(X)bold(beta) & = bold(X)^T bold(y) arrow.l.r
@@ -166,6 +166,7 @@ $
 #pagebreak()
 
 
+= Animations
 == Animations
 #uc.slide[
   Touying equation with pause:
@@ -176,7 +177,7 @@ $
 
   #ty.meanwhile
 
-  Touying equation is very simple.
+  Meanwhile, #ty.pause we can also use `#meanwhile` to #ty.pause display other content synchronously.
 ]
 
 == Complex Animations
@@ -198,8 +199,8 @@ $
 == Handout mode
 If you have "animations" in your presentation, you can set "handout" to "true" in the config and only include the last subslide.
 ```typ
-#import "@preview/ucph-nielsine-touying:0.1.2" as uc
-#import "@preview/touying:0.6.1" as ty
+#import "@preview/ucph-nielsine-touying:0.1.3" as uc
+#import "@preview/touying:0.6.3" as ty
 show: uc.ucph-metropolis-theme.with(
   // ...
   ,
@@ -207,7 +208,7 @@ ty.config-common(handout: true)
 )
 ```
 
-== Slide with columns #cite(<schelling1971dynamic>, form: "prose")
+== Slide with columns
 #uc.slide(align: center + horizon, composer: (1fr, 1fr))[
   First column.
 ][
@@ -218,7 +219,7 @@ ty.config-common(handout: true)
 == Color scheme
 Colors of the University of Copenhagen can be retrieved by specifying:
 ```typ
-#import "@preview/ucph-nielsine-touying:0.1.2" as uc
+#import "@preview/ucph-nielsine-touying:0.1.3" as uc
 // Darks
 uc.colors.ucph-dark.red // the default dark red color of UCPH
 // Medium
@@ -242,32 +243,24 @@ uc.colors.ucph-light // ...
   Wake up with a gradient!
 ]
 
-= References
-== References
-#set text(size: 14pt)
-#bibliography("bibliography.bib", style: "harvard-cite-them-right", title: none)
-
-#show: ty.appendix
-= Appendix
-== Appendix
-- If you look at the bottom right, the page counter starts with "A-" as this is an appendix.
 = Page anatomy
-==
+#uc.slide[
 #let container = rect.with(height: 100%, width: 100%, inset: 0pt)
 #let innerbox = rect.with(stroke: (dash: "dashed"))
-
-#set text(size: 30pt)
-#set page(
-  paper: "presentation-16-9",
-  header: container[#innerbox[Header]],
-  header-ascent: 30%,
-  footer: container[#innerbox[Footer]],
-  footer-descent: 30%,
-)
-
 #place(top + right)[Margin→]
 #container[
   #container[
     #innerbox[Content]
   ]
 ]
+]
+
+= References
+#uc.slide[
+  #set text(size: 14pt)
+  #bibliography("bibliography.bib", style: "harvard-cite-them-right", title: none)
+]
+#show: ty.appendix
+= Appendix
+== Appendix
+- If you look at the bottom right, the page counter starts with "A-" as this is an appendix.
