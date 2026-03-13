@@ -26,6 +26,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Security
 
+## [0.1.3] - 2026-03-13
+
+### Changed
+- Bumped `Touying` version to 0.6.3.
+- Exposed `header-block-size` & `header-block-text-size` to user
+- Increased default `header-block-size` & `header-block-text-size`
+- Removed Fira Math as default math font
+
 ## [0.1.2] - 2025-10-28
 
 ### Changed
@@ -73,3 +81,4 @@ in comparison to the previous release
 [0.1.0]: https://github.com/jorgenhost/ucph-nielsine-touying/releases/tag/v0.1.0
 [0.1.1]: https://github.com/jorgenhost/ucph-nielsine-touying/releases/tag/v0.1.1
 [0.1.2]: https://github.com/jorgenhost/ucph-nielsine-touying/releases/tag/v0.1.2
+[0.1.3]: https://github.com/jorgenhost/ucph-nielsine-touying/releases/tag/v0.1.3
