@@ -1,6 +1,7 @@
-#import "@preview/ucph-nielsine-touying:0.1.3" as uc
+// #import "@preview/ucph-nielsine-touying:0.1.3" as uc
+#import "../src/lib.typ" as uc
 #import "@preview/touying:0.6.3" as ty
-#import "@preview/theorion:0.4.1" as th
+#import "@preview/theorion:0.5.0" as th
 #import th.cosmos.clouds as thc
 
 // Font settings
@@ -33,14 +34,13 @@ Wow, this is a slide.
 
 = Examples
 == Example with `theorion`: OLS estimator
-#pagebreak()
 #thc.definition()[
   The OLS estimator
   $
     hat(bold(beta)) = (bold(X)^T bold(X))^(-1) bold(X)^T bold(y)
   $
 ]
-#th.important-box(fill: uc.colors.ucph-dark.red)[
+#th.important-block(fill: uc.colors.ucph-dark.red)[
   - This is very important.
   - Remember this.
 ]
