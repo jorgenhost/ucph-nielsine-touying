@@ -1,4 +1,4 @@
-// #import "@preview/ucph-nielsine-touying:0.1.3" as uc
+// #import "@preview/ucph-nielsine-touying:0.1.4" as uc
 #import "../src/lib.typ" as uc
 #import "@preview/touying:0.6.3" as ty
 #import "@preview/theorion:0.5.0" as th
@@ -30,7 +30,7 @@
 
 = First section
 == First slide
-Wow, this is a slide.
+Wow, this is a slide. 
 
 = Examples
 == Example with `theorion`: OLS estimator

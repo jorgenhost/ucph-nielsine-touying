@@ -51,7 +51,22 @@
       show regex("\d{4}"): set text(white)
       it
     }
-    
+
+  if self.store.header-progress {
+    place(dy: self.store.header-block-size*0.45,
+      // cancel the header cell's inset so the bar reaches the background edges
+      pad(x: -1em,
+        block(width: 100%, spacing: 0pt)[
+          #ty.components.progress-bar(
+            height: 2.5pt,
+            self.colors.primary,
+            self.colors.primary-light,
+          )
+        ]
+      )
+    )
+  }
+  
     ty.components.left-and-right(
       {
         if title != auto {
@@ -256,6 +271,7 @@
   header-block-size: 3em,
   header-text-size: 25pt,
   header-right: self => align(right, image(uc-logos.logo-seal-path, height: self.store.header-block-size*0.55)),
+  header-progress: true,
   footer: self => uc-utils.section-links(self),
   footer-right: self => uc-utils.slide-counter-label(self),
   footer-progress: true,
@@ -297,6 +313,7 @@
       header-text-size: header-text-size,
       header: header,
       header-right: header-right,
+      header-progress: header-progress,
       footer: footer,
       footer-right: footer-right,
       footer-progress: footer-progress,
