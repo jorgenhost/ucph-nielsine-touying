@@ -24,16 +24,14 @@
     logo: uc.logos.seal,
   ),
   ty.config-common(frozen-counters: (
-    th.theorem-counter,
-  )), // If you are using "animations", add this config option to stop touying from counting the same theorem multiple times
+    th.theorem-counter, // If you are using "animations", add this config option to stop touying from counting the same theorem multiple times
+    // handout: true, // if you have animations in your slides and only want to keep the last subslide
+    // new-section-slide-fn: none // if you wish to remove 'new section' slides
+  )), 
   ty.config-colors(
     primary: uc.colors.ucph-dark.red,
     secondary: uc.colors.ucph-medium.grey,
   ),
-  // ty.config-common(
-  //   handout: true, // if you have animations in your slides and only want to keep the last subslide
-  //   new-section-slide-fn: none // if you wish to remove 'new section' slides
-  // ),
 )
 
 #uc.title-slide()
