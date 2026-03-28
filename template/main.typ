@@ -13,6 +13,8 @@
 
 #show: uc.ucph-metropolis-theme.with(
   language: "en", // or "dk"
+  // header-progress: false, // default is false
+  // footer-progress: true, // default is true
   ty.config-info(
     title: [Title],
     subtitle: [Subtitle],
@@ -21,6 +23,9 @@
     institution: [University of Copenhagen],
     logo: uc.logos.seal,
   ),
+  ty.config-common(
+    // new-section-slide-fn: none // if you wish to remove 'new section' slides
+  )
 )
 
 #uc.title-slide()

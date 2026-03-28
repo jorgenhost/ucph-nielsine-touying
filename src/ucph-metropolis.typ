@@ -44,29 +44,18 @@
   }
   let header(self) = {
     set std.align(top)
-    show: ty.components.cell.with(fill: self.colors.secondary, inset: 1em, height: self.store.header-block-size)
-    set std.align(horizon)
-    set text(fill: self.colors.neutral-lightest, weight: "medium", size: self.store.header-text-size)
-    show cite: it => {
-      show regex("\d{4}"): set text(white)
-      it
-    }
-
-  if self.store.header-progress {
-    place(dy: self.store.header-block-size*0.45,
-      // cancel the header cell's inset so the bar reaches the background edges
-      pad(x: -1em,
-        block(width: 100%, spacing: 0pt)[
-          #ty.components.progress-bar(
-            height: 2.5pt,
-            self.colors.primary,
-            self.colors.primary-light,
-          )
-        ]
-      )
+    show: ty.components.cell.with(
+      fill: self.colors.secondary,
+      inset: 1em,
+      height: self.store.header-block-size,
     )
-  }
-  
+    set std.align(horizon)
+    set text(
+      fill: self.colors.neutral-lightest,
+      weight: "medium",
+      size: self.store.header-text-size,
+    )
+
     ty.components.left-and-right(
       {
         if title != auto {
@@ -98,6 +87,27 @@
     show: std.align.with(self.store.align)
     set text(fill: self.colors.neutral-darkest)
     show: setting
+
+    // progress bar directly under the header, in the body area
+    if self.store.header-progress {
+      // This anchors to the top of the BODY region (below header),
+      // so it will always be "just below the gray header".
+      place(
+        top,
+        pad(
+          // If you want it to span the full slide width, cancel page x margins:
+          x: -2em,
+          block(width: 100%, spacing: 0pt)[
+            #ty.components.progress-bar(
+              height: 2.5pt,
+              self.colors.primary,
+              self.colors.primary-light,
+            )
+          ]
+        )
+      )
+    }
+
     body
   }
   ty.touying-slide(self: self, config: config, repeat: repeat, setting: new-setting, composer: composer, ..bodies)
@@ -109,7 +119,7 @@
 /// Example:
 ///
 /// ```typst
-/// #import "@preview/ucph-nielsine-slides:0.1.2" as uc
+/// #import "@preview/ucph-nielsine-slides:0.1.3" as uc
 /// #show: ucph-metropolis-theme.with(
 ///   config-info(
 ///     title: [Title],
@@ -130,6 +140,7 @@
 ) = ty.touying-slide-wrapper(self => {
   self = ty.utils.merge-dicts(self, ty.config-common(freeze-slide-counter: true), ty.config-page(
     fill: self.colors.neutral-lightest,
+    margin: (top: 1em, bottom: 1em)
   ), config)
   let info = self.info + args.named()
   let body = {
@@ -199,7 +210,7 @@
     )
     text(self.colors.neutral-dark, body)
   }
-  self = ty.utils.merge-dicts(self, ty.config-page(fill: self.colors.neutral-lightest), config)
+  self = ty.utils.merge-dicts(self, ty.config-page(fill: self.colors.neutral-lightest, margin: (top: 1em, bottom: 1em)), config)
   ty.touying-slide(self: self, config: config, slide-body)
 })
 
@@ -271,7 +282,7 @@
   header-block-size: 3em,
   header-text-size: 25pt,
   header-right: self => align(right, image(uc-logos.logo-seal-path, height: self.store.header-block-size*0.55)),
-  header-progress: true,
+  header-progress: false,
   footer: self => uc-utils.section-links(self),
   footer-right: self => uc-utils.slide-counter-label(self),
   footer-progress: true,
@@ -287,7 +298,7 @@
     
   show: ty.touying-slides.with(
     ty.config-page(..ty.utils.page-args-from-aspect-ratio(aspect-ratio), header-ascent: 30%, footer-descent: 30%, margin: (
-      top: 3em,
+      top: header-block-size,
       bottom: 1.5em,
       x: 2em,
     )),
