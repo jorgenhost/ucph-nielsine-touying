@@ -1,6 +1,6 @@
 // #import "@preview/ucph-nielsine-touying:0.1.3" as uc
 #import "../src/lib.typ" as uc
-#import "@preview/theorion:0.4.1" as th
+#import "@preview/theorion:0.5.0" as th
 #import th.cosmos.clouds as thc
 #import "@preview/touying:0.6.3" as ty
 #import "@preview/pinit:0.2.2" as pi
@@ -24,16 +24,14 @@
     logo: uc.logos.seal,
   ),
   ty.config-common(frozen-counters: (
-    th.theorem-counter,
-  )), // If you are using "animations", add this config option to stop touying from counting the same theorem multiple times
+    th.theorem-counter, // If you are using "animations", add this config option to stop touying from counting the same theorem multiple times
+    // handout: true, // if you have animations in your slides and only want to keep the last subslide
+    // new-section-slide-fn: none // if you wish to remove 'new section' slides
+  )), 
   ty.config-colors(
     primary: uc.colors.ucph-dark.red,
     secondary: uc.colors.ucph-medium.grey,
   ),
-  // Uncomment this if you have animations in your slides and only want to keep the last subslide
-  // ty.config-common(
-  //   handout: true,
-  // ),
 )
 
 #uc.title-slide()
@@ -102,7 +100,7 @@ Paragraph after the equation.
     hat(bold(beta)) = (bold(X)^T bold(X))^(-1) bold(X)^T bold(y)
   $
 ]
-#th.important-box(fill: uc.colors.ucph-dark.red)[
+#th.important-block(fill: uc.colors.ucph-dark.red)[
   - Remember this!
 ]
 #thc.theorem()[
@@ -145,7 +143,9 @@ $
   bold(X)^T bold(y) + bold(beta)^T bold(X)^T bold(X) bold(beta)
 $
 
-_Note_: By multiple a vector with itself transposed with just a scalar, or in this case $bold(epsilon)^T bold(epsilon)$ which is the sum of squared error terms.
+#th.emph-block[
+Multiplying a vector with itself transposed is a scalar, such that $bold(epsilon)^T bold(epsilon)$ is the sum of squared error terms.
+]
 
 #pagebreak()
 

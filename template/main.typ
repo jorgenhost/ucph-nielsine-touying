@@ -1,4 +1,4 @@
-// #import "@preview/ucph-nielsine-touying:0.1.3" as uc
+// #import "@preview/ucph-nielsine-touying:0.1.4" as uc
 #import "../src/lib.typ" as uc
 #import "@preview/touying:0.6.3" as ty
 #import "@preview/theorion:0.5.0" as th
@@ -13,6 +13,8 @@
 
 #show: uc.ucph-metropolis-theme.with(
   language: "en", // or "dk"
+  // header-progress: false, // default is false
+  // footer-progress: true, // default is true
   ty.config-info(
     title: [Title],
     subtitle: [Subtitle],
@@ -21,6 +23,9 @@
     institution: [University of Copenhagen],
     logo: uc.logos.seal,
   ),
+  ty.config-common(
+    // new-section-slide-fn: none // if you wish to remove 'new section' slides
+  )
 )
 
 #uc.title-slide()
@@ -30,7 +35,7 @@
 
 = First section
 == First slide
-Wow, this is a slide.
+Wow, this is a slide. 
 
 = Examples
 == Example with `theorion`: OLS estimator
